@@ -22,6 +22,7 @@ export default class Search extends Component {
           language: 'pt',
         }}
         textInputProps={{
+          // para ocultar a listview
           onFocus: () => {
             this.setState({searchFocused: true});
           },

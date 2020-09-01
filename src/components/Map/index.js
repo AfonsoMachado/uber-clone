@@ -61,12 +61,16 @@ export default class Map extends Component {
           style={{flex: 1}}
           region={region}
           showsUserLocation
-          loadingEnabled>
+          loadingEnabled
+          // acesso a instancia do mapa
+          ref={(el) => (this.MapView = el)}>
           {destination && (
             <Directions
               origin={region}
               destination={destination}
-              onReady={() => {}}
+              onReady={(result) => {
+                this.MapView.fitToCoordinates(result.coordinates);
+              }}
             />
           )}
         </MapView>
