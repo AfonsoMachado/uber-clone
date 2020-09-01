@@ -12,8 +12,6 @@ export default class Map extends Component {
   async componentDidMount() {
     Geolocation.getCurrentPosition(
       ({coords: {latitude, longitude}}) => {
-        //da erro aqui
-        console.log('LATITUDE', latitude);
         this.setState({
           region: {
             latitude,
