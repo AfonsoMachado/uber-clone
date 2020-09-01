@@ -5,6 +5,7 @@ import Geolocation from 'react-native-geolocation-service';
 
 import Search from '../Search';
 import Directions from '../Directions';
+import {getPixelSize} from '../../utils';
 
 export default class Map extends Component {
   state = {
@@ -62,6 +63,7 @@ export default class Map extends Component {
           region={region}
           showsUserLocation
           loadingEnabled
+          // showsMyLocationButton
           // acesso a instancia do mapa
           ref={(el) => (this.MapView = el)}>
           {destination && (
@@ -69,7 +71,14 @@ export default class Map extends Component {
               origin={region}
               destination={destination}
               onReady={(result) => {
-                this.MapView.fitToCoordinates(result.coordinates);
+                this.MapView.fitToCoordinates(result.coordinates, {
+                  edgePadding: {
+                    right: getPixelSize(50),
+                    left: getPixelSize(50),
+                    top: getPixelSize(50),
+                    bottom: getPixelSize(50),
+                  },
+                });
               }}
             />
           )}
