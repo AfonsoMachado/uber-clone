@@ -3,7 +3,12 @@ import {GooglePlacesAutocomplete} from 'react-native-google-places-autocomplete'
 import {Platform} from 'react-native';
 
 export default class Search extends Component {
+  state = {
+    searchFocused: false,
+  };
+
   render() {
+    const {searchFocused} = this.props;
     // lidando no componente de mapa quando o usario clica numa localização
     const {onLocationSelected} = this.props;
 
@@ -17,9 +22,16 @@ export default class Search extends Component {
           language: 'pt',
         }}
         textInputProps={{
+          onFocus: () => {
+            this.setState({searchFocused: true});
+          },
+          onBlur: () => {
+            this.setState({searchFocused: false});
+          },
           autoCapitalize: 'none',
           autoCorrect: false,
         }}
+        listViewDisplayed={searchFocused}
         // busca latitude e longitude
         fetchDetails
         enablePoweredByContainer={false}
