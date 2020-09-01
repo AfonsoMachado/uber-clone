@@ -2,11 +2,14 @@ import React, {Component} from 'react';
 import {View} from 'react-native';
 import MapView from 'react-native-maps';
 import Geolocation from 'react-native-geolocation-service';
+
 import Search from '../Search';
+import Directions from '../Directions';
 
 export default class Map extends Component {
   state = {
     region: null,
+    destination: null,
   };
 
   // executado quando o componente for renderizado em tela
@@ -34,8 +37,22 @@ export default class Map extends Component {
     );
   }
 
+  handleLocationSelected = (data, {geometry}) => {
+    const {
+      location: {lat: latitude, lng: longitude},
+    } = geometry;
+
+    this.setState({
+      destination: {
+        latitude,
+        longitude,
+        title: data.structured_formatting.main_text,
+      },
+    });
+  };
+
   render() {
-    const {region} = this.state;
+    const {region, destination} = this.state;
     // console.log(region);
 
     return (
@@ -44,10 +61,17 @@ export default class Map extends Component {
           style={{flex: 1}}
           region={region}
           showsUserLocation
-          loadingEnabled
-        />
+          loadingEnabled>
+          {destination && (
+            <Directions
+              origin={region}
+              destination={destination}
+              onReady={() => {}}
+            />
+          )}
+        </MapView>
 
-        <Search />
+        <Search onLocationSelected={this.handleLocationSelected} />
       </View>
     );
   }
