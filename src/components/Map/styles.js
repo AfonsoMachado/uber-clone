@@ -1,4 +1,5 @@
-import styled from 'styled-components/native';
+import styled, {css} from 'styled-components/native';
+import {Platform} from 'react-native';
 
 export const LocationBox = styled.View`
   background: #fff;
@@ -9,6 +10,16 @@ export const LocationBox = styled.View`
   border: 1px solid #ddd;
   border-radius: 3px;
   flex-direction: row;
+
+  ${Platform.select({
+    ios: css`
+      margin-top: 20px;
+    `,
+    android: css`
+      margin-top: 20px;
+      margin-left: 5px;
+    `,
+  })}
 `;
 
 export const LocationText = styled.Text`
