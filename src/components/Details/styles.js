@@ -9,7 +9,7 @@ export const Container = styled.View`
   shadow-color: #000;
   shadow-offset: 0 0;
   shadow-opacity: 0.2;
-  shadow-radius: 10;
+  shadow-radius: 10px;
   elevation: 3;
   border: 1px solid #ddd;
   align-items: center;
