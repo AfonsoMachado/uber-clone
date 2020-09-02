@@ -6,6 +6,7 @@ import Geocoder from 'react-native-geocoding';
 
 import Search from '../Search';
 import Directions from '../Directions';
+import Details from '../Details';
 import {getPixelSize} from '../../utils';
 
 import markerImage from '../../assets/marker.png';
@@ -92,8 +93,10 @@ export default class Map extends Component {
                 origin={region}
                 destination={destination}
                 onReady={(result) => {
-                  this.setState({duration: Math.floor(result.duration)});
+                  //TODO Correção de problemas, apenas um desses comandos funciona
+                  // this.setState({duration: Math.floor(result.duration)});
 
+                  // movimento de distanciar da tela
                   this.MapView.fitToCoordinates(result.coordinates, {
                     edgePadding: {
                       right: getPixelSize(50),
@@ -126,7 +129,11 @@ export default class Map extends Component {
           )}
         </MapView>
 
-        <Search onLocationSelected={this.handleLocationSelected} />
+        {destination ? (
+          <Details />
+        ) : (
+          <Search onLocationSelected={this.handleLocationSelected} />
+        )}
       </View>
     );
   }
