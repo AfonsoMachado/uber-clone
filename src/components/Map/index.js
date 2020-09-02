@@ -88,12 +88,12 @@ export default class Map extends Component {
     return (
       <View style={{flex: 1}}>
         <MapView
+          // acesso a instancia do mapa
+          ref={(el) => (this.MapView = el)}
           style={{flex: 1}}
           region={region}
           showsUserLocation
-          loadingEnabled
-          // acesso a instancia do mapa
-          ref={(el) => (this.MapView = el)}>
+          loadingEnabled>
           {destination && (
             <Fragment>
               <Directions
