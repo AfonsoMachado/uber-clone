@@ -42,7 +42,7 @@ $ yarn ios
 
 ## :white_check_mark: Resultado
 
-![](https://github.com/AfonsoMachado/instagram-feed-clone/blob/master/result.jfif)
+![](https://github.com/AfonsoMachado/instagram-feed-clone/blob/master/result.jpg)
 
 ---
 
