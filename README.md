@@ -42,7 +42,7 @@ $ yarn ios
 
 ## :white_check_mark: Resultado
 
-![](https://github.com/AfonsoMachado/uber-clone/blob/master/result.jpg)
+<img src="result.jpg" alt="Resultado" width="300"/>
 
 ---
 
